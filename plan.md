@@ -2,7 +2,7 @@
 
 ## Conceito
 
-Uma aplicação de ERP que consome dados cdo IBGE de forma eficaz
+Uma aplicação de ERP que consome dados do IBGE de forma eficaz e os usa para metricas ideográficas relacionadas a empresa
 
 ## Objetivo
 
