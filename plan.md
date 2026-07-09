@@ -24,6 +24,7 @@ Focando atualmente em desenvolver o MVP Inicial do Projeto e focando apenas em d
 - **Dashboard Inicial:** Gráficos de vendas da empresa.
 
 - **Tela de Clientes:** Listagem e formulário de cadastro.
+
 - **Tela de Nova Venda:** Formulário simples para registrar o pedido.
 
 - **Tela de Análise de Mercado (Integração IBGE):** Um mapa ou gráfico de barras comparando: População da Cidade (IBGE) vs Volume de Vendas da sua Empresa.
