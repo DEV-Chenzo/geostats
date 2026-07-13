@@ -51,8 +51,8 @@ _A escolha do **React + Vite + Typescript** me garante uma base solida contra er
 
 _Juntos ao **Recharts**, obtenho uma facilidade de implementação de de gráficos e estruturas das páginas de forma simples, eficaz e sem perder a segurança._
 
-- **Back-end:**
-  - PostgreSQL + Prisma (ORM) -> Database
+- **Database**
+  - PostgreSQL + Prisma (ORM)
 
 _A escolha do **PostgreSQL** se da por ser projetado para lidar com consultas extremamente complexas, grandes volumes de dados e operações analíticas._
 
@@ -86,4 +86,46 @@ _A ideia é também aprender a criar teste automatizados que cumpram pelo menos 
 
 > **3 - Topo (Testes End-to-End / E2E):** Simula o usuário clicando na tela (usando ferramentas como Cypress ou Playwright). São os mais lentos e caros de manter, por isso ficam no topo em menor quantidade.
 
-#### Conexão E2E e Design de Pastas
+#### Design de Pastas
+
+_Esta estrutura de pastas segue os princípios do **SOLID** e conceitos de **Clean Architecture**, dividindo o projeto em camadas bem definidas: **Domínio** (regras de negócio), **Infraestrutura** (comunicação externa e APIs) e **Apresentação** (UI e React)._
+
+```text
+meu-projeto/
+├── public/
+├── src/
+│   ├── @types/                 # Tipagens globais do TypeScript
+│   │
+│   ├── core/                   # Elementos compartilhados por todo o sistema
+│   │   └── config/             # Configurações globais (ex: instâncias do Axios, chaves)
+│   │
+│   ├── domain/                 # 1. CAMADA DE DOMÍNIO (Regras de Negócio Puras - Sem React)
+│   │   ├── entities/           # Classes de Negócio (ex: Estado.ts, Municipio.ts, Venda.ts)
+│   │   ├── repositories/       # Interfaces/Contratos (ex: IProvedorDadosDemograficos.ts)
+│   │   └── useCases/           # Regras de aplicação específicas (ex: CalcularPotencialMercado.ts)
+│   │
+│   ├── infrastructure/         # 2. CAMADA DE INFRAESTRUTURA (Ferramentas e APIs externas)
+│   │   ├── services/           # Implementação dos serviços (ex: IbgeDadosService.ts)
+│   │   └── repositories/       # Implementação de persistência (ex: LocalStorageVendaRepository.ts)
+│   │
+│   ├── presentation/           # 3. CAMADA DE APRESENTAÇÃO (Interface com o Usuário - React)
+│   │   ├── components/         # Componentes globais e reutilizáveis (Botões, Inputs, Cards)
+│   │   ├── contexts/           # Contextos do React para gerenciamento de estado global
+│   │   ├── hooks/              # Custom Hooks para ligar a UI aos Casos de Uso (ex: useAnaliseMercado.ts)
+│   │   ├── pages/              # Telas/Páginas completas do ERP
+│   │   │   ├── Dashboard/
+│   │   │   └── AnaliseMercado/
+│   │   │       ├── AnaliseMercadoPage.tsx
+│   │   │       └── components/ # Componentes exclusivos desta página
+│   │   └── styles/             # Estilizações globais (CSS Modules, SCSS ou Tailwind base)
+│   │
+│   ├── App.tsx                 # Componente raiz
+│   ├── main.tsx                # Ponto de entrada do Vite (inicialização)
+│   └── vite-env.d.ts
+│
+├── .env                        # Variáveis de ambiente
+├── index.html
+├── package.json
+├── tsconfig.json               # Configurações do TypeScript e Paths personalizados
+└── vite.config.ts              # Configuração do Vite
+```
