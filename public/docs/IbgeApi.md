@@ -10,7 +10,7 @@ Toda requisição ao IBGE é dividida em 4 partes principais:
 
 $$\text{URL Base} + \text{Versão do Serviço} + \text{Recurso/Endpoint} + \text{Parâmetros (Query Params)}$$
 
-### Exemplo Visual:
+### Exemplo Visual
 
 ```text
 https://servicodados.ibge.gov.br/api/v1/localidades/estados/BA/municipios?orderBy=nome
@@ -57,7 +57,7 @@ Desmistificando os elementos:
 | **`{nivel}`**    | Nível geográfico (`N1`=Brasil, `N2`=Região, `N3`=UF, `N6`=Município) | `N6`                                  |
 | **`[{ids}]`**    | IDs específicos ou `all` para todos                                  | `N6[2927408]` (Salvador) ou `N6[all]` |
 
-#### Exemplo Prático Completo:
+#### Exemplo Prático Completo
 
 Buscar a população do Censo 2022 apenas para o município com ID `2927408`:
 
