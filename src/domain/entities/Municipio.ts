@@ -7,13 +7,8 @@ export class Municipio {
     public readonly nome: string,
     public readonly regiaoImediata?: IDadosDeRegiaoImediata,
     public readonly regiaoIntermediaria?: IDadosDeRegiaoIntermediaria,
-    public readonly regiao?: string,
-    public readonly capital?: boolean,
-    public populacao?: number,
+    public readonly populacao?: number | Promise<number>,
+    public readonly èCapital?: boolean,
   ) {}
 
-  public atualizarPopulacao(quantidade: number): void {
-    if (quantidade < 0) throw new Error("População não pode ser negativa.");
-    this.populacao = quantidade;
-  }
 }

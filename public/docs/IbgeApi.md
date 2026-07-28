@@ -85,3 +85,9 @@ Como os números das tabelas (`9514`, `5938`) e variáveis (`93`, `37`) não sã
   `GET [https://servicodados.ibge.gov.br/api/v3/agregados](https://servicodados.ibge.gov.br/api/v3/agregados)`
 - **Ver metadados de uma tabela específica (saber quais variáveis existem nela):**
   `GET [https://servicodados.ibge.gov.br/api/v3/agregados/9514/metadados](https://servicodados.ibge.gov.br/api/v3/agregados/9514/metadados)`
+
+## 5. Considerações estratégicas
+
+Observações que motivaram decisões técnicas e estratégicas por parte do uso/consumo da Api do IBGE.
+
+### I - Porque buscar a população e os municípios separadamente
