@@ -90,4 +90,52 @@ Como os números das tabelas (`9514`, `5938`) e variáveis (`93`, `37`) não sã
 
 Observações que motivaram decisões técnicas e estratégicas por parte do uso/consumo da Api do IBGE.
 
-### I - Porque buscar a população e os municípios separadamente
+### I - Porque ter duas funções de busca de população ao invés de uma só (DRY principle e desempenho) ?
+
+A biblioteca possui duas funções responsáveis pela obtenção da população dos municípios, cada uma projetada para um cenário específico. Essa separação segue o princípio **DRY (Don't Repeat Yourself)** e também busca otimizar o desempenho da aplicação.
+
+`buscarPopulacaoMunicipio(idMunicipio)`
+
+Este método é utilizado quando o objetivo é consultar a população de **um único município**. Ele realiza uma requisição específica à API do IBGE e retorna apenas a população do município informado.
+
+**Quando utilizar:**
+
+- Consultar a população de um município específico.
+- Operações pontuais que não exigem informações de outros municípios.
+
+---
+
+`criarIndicePopulacao(uf)`
+
+Este método é utilizado internamente durante a execução de `buscarMunicipiosPorEstado()`.
+
+Em vez de realizar uma requisição para cada município do estado, ele faz **uma única consulta** à API do IBGE para obter a população de todos os municípios da Unidade Federativa (UF). Em seguida, os dados são organizados em um `Map<number, number>`, onde:
+
+- **Chave (`key`)** → ID do município.
+- **Valor (`value`)** → População do município.
+
+Exemplo:
+
+```text
+2900108 → 7301
+2900207 → 17294
+2900306 → 14567
+```
+
+Durante o mapeamento dos municípios, basta consultar o `Map` utilizando o ID do município para obter sua população de forma rápida:
+
+```ts
+const populacao = indicePopulacao.get(municipio.id) ?? 0;
+```
+
+---
+
+#### Benefícios dessa abordagem
+
+- **Evita duplicação de código**, mantendo cada método responsável por um único cenário.
+- **Melhora a organização da classe**, deixando cada função com uma responsabilidade específica.
+- **Reduz drasticamente o número de requisições à API.**
+
+Por exemplo, o estado da Bahia possui **417 municípios**. Se `buscarMunicipiosPorEstado()` utilizasse apenas `buscarPopulacaoMunicipio()`, seriam realizadas **417 requisições** à API do IBGE.
+
+Com `criarIndicePopulacao()`, é realizada **apenas uma única requisição**, que retorna a população de todos os municípios da UF. Depois disso, as populações são consultadas diretamente em memória através de um `Map`, tornando o processo significativamente mais rápido e eficiente.
