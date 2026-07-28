@@ -27,7 +27,11 @@ export class IbgeDadosService implements IProvedorDadosDemograficos {
       `${this.baseUrl}/v1/localidades/estados/${siglaEstado}/municipios`,
     );
     const data = await response.json();
-    return data.map((mun: MunicipioIbge) => new Municipio(mun.id, mun.nome, mun.regiaoImediata));
+    return data.map((mun: MunicipioIbge) => {
+      const regiaoImediata = mun["regiao-imediata"];
+      const regiaoIntermediaria = regiaoImediata ? regiaoImediata["regiao-intermediaria"] : undefined;
+      return new Municipio(mun.id, mun.nome, regiaoImediata, regiaoIntermediaria);
+    });
   }
 
   async buscarPopulacaoMunicipio(idMunicipio: number): Promise<number> {
@@ -44,3 +48,4 @@ export class IbgeDadosService implements IProvedorDadosDemograficos {
     }
   }
 }
+

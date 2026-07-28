@@ -1,10 +1,26 @@
 export type MunicipioIbge = {
   id: number;
   nome: string;
-  regiaoImediata: {
+
+  microrregiao: {
     id: number;
     nome: string;
-    regiaoIntermediaria: {
+    mesorregiao: {
+      id: number;
+      nome: string;
+      UF: {
+        id: number;
+        nome: string;
+        sigla: string;
+      };
+    };
+  };
+
+  "regiao-imediata": {
+    id: number;
+    nome: string;
+
+    "regiao-intermediaria": {
       id: number;
       nome: string;
       UF: {
@@ -15,4 +31,5 @@ export type MunicipioIbge = {
     };
   };
 };
+
 
