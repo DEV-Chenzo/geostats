@@ -27,7 +27,7 @@ export class IbgeDadosService implements IProvedorDadosDemograficos {
       `${this.baseUrl}/v1/localidades/estados/${siglaEstado}/municipios`,
     );
     const data = await response.json();
-    return data.map((mun: MunicipioIbge) => new Municipio(mun.id, mun.nome));
+    return data.map((mun: MunicipioIbge) => new Municipio(mun.id, mun.nome, mun.regiaoImediata));
   }
 
   async buscarPopulacaoMunicipio(idMunicipio: number): Promise<number> {

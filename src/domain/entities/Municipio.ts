@@ -5,11 +5,11 @@ export class Municipio {
   constructor(
     public readonly id: number,
     public readonly nome: string,
-    public populacao?: number,
     public readonly regiaoImediata?: IDadosDeRegiaoImediata,
     public readonly regiaoIntermediaria?: IDadosDeRegiaoIntermediaria,
     public readonly regiao?: string,
-    public readonly capital?: boolean
+    public readonly capital?: boolean,
+    public populacao?: number,
   ) {}
 
   public atualizarPopulacao(quantidade: number): void {
