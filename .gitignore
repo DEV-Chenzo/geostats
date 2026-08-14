@@ -43,3 +43,8 @@ next-env.d.ts
 #Teste
 
 teste.ts
+
+# IA
+.claude
+.windsurf
+.agents
