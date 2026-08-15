@@ -1,5 +1,5 @@
-import type { IDadosDeRegiaoImediata } from "../repositories/IDadosDeRegiaoImediata";
-import type { IDadosDeRegiaoIntermediaria } from "../repositories/IDadosDeRegiaoIntermediaria";
+import type { IDadosDeRegiaoImediata } from "../repositories/IDadosDeRegiaoImediata.ts";
+import type { IDadosDeRegiaoIntermediaria } from "../repositories/IDadosDeRegiaoIntermediaria.ts";
 
 export class Municipio {
   constructor(

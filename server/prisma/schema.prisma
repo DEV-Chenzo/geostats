@@ -10,7 +10,7 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
+model Vendas {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String?

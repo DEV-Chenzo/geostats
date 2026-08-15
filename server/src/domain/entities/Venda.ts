@@ -1,10 +1,4 @@
-export type Localizacao = {
-  id: number;
-  nome: string;
-  uf: string;
-  populacao?: number;
-  eCapital?: boolean;
-};
+import type { Localizacao } from "../repositories/ILocalizaçãoDeVendas.ts";
 
 export class Venda {
   constructor(

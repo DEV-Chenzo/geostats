@@ -1,9 +1,9 @@
-import { IProvedorDadosDemograficos } from "../../domain/repositories/IprovedorDadosDemográficos";
-import { Estado } from "../../domain/entities/Estado";
-import { Municipio } from "../../domain/entities/Municipio";
-import { EstadoIbge } from "../../domain/repositories/IEstadosIbge";
-import { MunicipioIbge } from "../../domain/repositories/IMunicipioIbge";
-import { CAPITAIS } from "../../common/constants/capitais";
+import { CAPITAIS } from "../../common/constants/capitais.ts";
+import { Estado } from "../../domain/entities/Estado.ts";
+import { Municipio } from "../../domain/entities/Municipio.ts";
+import { type EstadoIbge } from "../../domain/repositories/IEstadosIbge.ts";
+import { type MunicipioIbge } from "../../domain/repositories/IMunicipioIbge.ts";
+import { type IProvedorDadosDemograficos } from "../../domain/repositories/IprovedorDadosDemográficos.ts";
 
 export class IbgeDadosService implements IProvedorDadosDemograficos {
   private readonly baseUrl: string = "https://servicodados.ibge.gov.br/api";
@@ -103,7 +103,7 @@ export class IbgeDadosService implements IProvedorDadosDemograficos {
           uf: uf.sigla,
         },
         populacao,
-        eCapital
+        eCapital,
       );
     });
   }

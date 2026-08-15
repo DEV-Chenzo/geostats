@@ -1,4 +1,4 @@
-import type { IDadosDeRegiao } from "../repositories/IDadosDeRegiao";
+import type { IDadosDeRegiao } from "../repositories/IDadosDeRegiao.ts";
 
 export class Estado {
   constructor(

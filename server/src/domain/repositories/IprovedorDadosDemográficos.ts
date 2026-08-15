@@ -1,6 +1,6 @@
 // domain/repositories/IProvedorDadosDemograficos.ts
-import { Estado } from '../entities/Estado';
-import { Municipio } from '../entities/Municipio';
+import { Estado } from '../entities/Estado.ts';
+import { Municipio } from '../entities/Municipio.ts';
 
 export interface IProvedorDadosDemograficos {
   buscarEstados(): Promise<Estado[]>;
